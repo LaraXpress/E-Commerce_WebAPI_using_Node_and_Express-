@@ -17,6 +17,12 @@ app.get(`${api}/products`,(req,res)=>{
     res.send(product);
 });
 
+app.post(`${api}/products`,(req,res)=>{    
+    const newProduct = req.body;
+    console.log(newProduct);
+    res.send(newProduct);
+});
+
 app.listen(3000,()=>{
     console.log(api);
     console.log('Server is running at http://localhost:3000');
