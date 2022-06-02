@@ -1,11 +1,20 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
+
+//middleware
+app.use(bodyParser.json());
 
 require('dotenv/config');
 const api = process.env.API_URL;
 
-app.get(api+'/products',(req,res)=>{    
-    res.send("Hello Mazed, Welcome to Node JS in Bangladesh");
+app.get(`${api}/products`,(req,res)=>{    
+    const product={
+        id:1,
+        name:'John Smith',
+        profession :'Software Engineer'
+    }
+    res.send(product);
 });
 
 app.listen(3000,()=>{
