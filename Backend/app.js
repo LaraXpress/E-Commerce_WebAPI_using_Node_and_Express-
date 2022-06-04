@@ -9,7 +9,13 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
 require('dotenv/config');
+
+const productRouter = require('./routers/products');
+const categoryRouter = require('./routers/category');
+
 const api = process.env.API_URL;
+app.use(`${api}/products`,productRouter);
+app.use(`${api}/categories`,categoryRouter);
 
 mongoose.connect(process.env.CONNECTION_STRING)
 .then(()=>{
